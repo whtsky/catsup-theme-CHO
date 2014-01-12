@@ -1,0 +1,54 @@
+{% from "utils.html" import analytics %}
+<!doctype html>
+<!--[if lt IE 7]> <html class="ie6 oldie"> <![endif]-->
+<!--[if IE 7]>    <html class="ie7 oldie"> <![endif]-->
+<!--[if IE 8]>    <html class="ie8 oldie"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="">
+<!--<![endif]-->
+
+<head>
+{% block head %}{% endblock %}
+<title>{% block title %}{{ site.name }}{% endblock %}</title>
+<link rel="stylesheet" href="{{ static_url("boilerplate.css") }}" type="text/css" />
+<link rel="stylesheet" href="{{ static_url("CHO.css") }}" type="text/css" />
+<link rel="alternate" type="application/rss+xml" href="{{ url_for('feed') }}" title="{{ site.name }}" />
+<link rel="canonical" href="{{ permalink }}"/>
+{{ analytics() }}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 
+To learn more about the conditional comments around the html tags at the top of the file:
+paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+
+Do the following if you're using your customized build of modernizr (http://www.modernizr.com/):
+* insert the link to your js here
+* remove the link below to the html5shiv
+* add the "no-js" class to the html tags at the top
+* you can also remove the link to respond.min.js if you included the MQ Polyfill in your modernizr build 
+-->
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script src="{{ static_url("respond.min.js") }}"></script>
+</head>
+<body>
+<div class="gridContainer clearfix">
+  <div id="logo"><div class="fluid logo"><img src="logo.png"  alt="" width="268" height="227"/><ul id="logo_bar" class="fluid fluidList"> <li class="fluid logo_bar_item"><a href="#">首</a></li>
+   <li class="fluid logo_bar_item"><a href="{{ url_for("archives") }}">归</a></li>
+   {% for page in pages %}<li class="fluid logo_bar_item"><a href="{{ url_for(page) }}">{{ page.title }}</a></li>{% endfor %} </ul></div>
+  </div>
+  <div class="fluid main">
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+  </div>
+          <footer class="fluid footer">
+            Powered by <a href="http://github.com/whtsky/catsup">Catsup</a>
+            &
+            Theme <a href="https://github.com/whtsky/catsup-theme-CHO">CHO</a>
+        </footer>
+</div>
+</body>
+</html>
