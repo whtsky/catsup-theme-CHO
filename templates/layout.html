@@ -34,7 +34,7 @@ Do the following if you're using your customized build of modernizr (http://www.
 </head>
 <body>
 <div class="gridContainer clearfix">
-  <div id="logo"><div class="fluid logo"><img src="logo.png"  alt="" width="268" height="227"/><ul id="logo_bar" class="fluid fluidList"> <li class="fluid logo_bar_item"><a href="#">首</a></li>
+  <div id="logo"><div class="fluid logo"><img src="{{ status_url("logo.png")}}"  alt="" width="268" height="227"/><ul id="logo_bar" class="fluid fluidList"> <li class="fluid logo_bar_item"><a href="#">首</a></li>
    <li class="fluid logo_bar_item"><a href="{{ url_for("archives") }}">归</a></li>
    {% for page in pages %}<li class="fluid logo_bar_item"><a href="{{ url_for(page) }}">{{ page.title }}</a></li>{% endfor %} </ul></div>
   </div>
